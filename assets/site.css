@@ -408,8 +408,10 @@
   .shot{display:block;border:1px solid var(--rule);overflow:hidden;line-height:0;
     background:var(--bg-soft)}
   .shot img{width:100%;height:auto;display:block}
+  /* the global h2 is the hub's small uppercase section label - opt out explicitly */
   .featured h2{font-family:var(--serif);font-weight:600;font-size:1.62rem;
-    line-height:1.24;margin:0 0 12px;color:var(--navy-deep)}
+    line-height:1.24;letter-spacing:-.01em;text-transform:none;
+    margin:0 0 12px;color:var(--navy-deep)}
   .featured p{margin:0 0 16px;color:var(--muted);font-size:.99rem}
 
   /* six cards, fixed columns so they land 3 and 3 and never 4 then 2 */
