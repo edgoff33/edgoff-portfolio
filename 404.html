@@ -304,6 +304,35 @@
     font-size:.92rem;color:var(--muted);
   }
 
+  /* ---------- downloadable artifact, shown as a linked preview ---------- */
+  .artifact{margin:30px 0 26px}
+  .artifact-link{
+    position:relative;display:block;line-height:0;text-decoration:none;
+    border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+    background:var(--bg-soft)
+  }
+  .artifact-link img{width:100%;height:auto;display:block}
+  /* Overlays the call-to-action drawn into the graphic. Percentages of the source
+     image (1536 x 1024) so it stays registered at every width. */
+  .artifact-hotspot{
+    position:absolute;left:61.52%;top:89.45%;width:20.64%;height:5.57%;
+    border-radius:2px;pointer-events:none;
+    box-shadow:0 0 0 0 rgba(255,255,255,0);
+    transition:box-shadow .18s ease,transform .18s ease
+  }
+  .artifact-link:hover .artifact-hotspot,
+  .artifact-link:focus-visible .artifact-hotspot{
+    box-shadow:0 0 0 3px rgba(255,255,255,.85);transform:scale(1.03)
+  }
+  .artifact-link:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+  .artifact figcaption{
+    margin-top:10px;font-size:.93rem;line-height:1.5;color:var(--muted)
+  }
+  @media (prefers-reduced-motion:reduce){
+    .artifact-hotspot{transition:none}
+    .artifact-link:hover .artifact-hotspot{transform:none}
+  }
+
   /* ---------- section index listings ---------- */
   .listing{list-style:none;margin:0;padding:0}
   .listing li{padding:24px 0;border-top:1px solid var(--rule-soft)}
@@ -341,6 +370,7 @@
   @media print{
     header.slim{border-bottom:1px solid #ccc}
     .backlink{display:none}
+    .artifact-hotspot{display:none}
     .article{max-width:none}
   }
 
