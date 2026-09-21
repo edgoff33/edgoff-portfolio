@@ -325,8 +325,21 @@
   .listing li{padding:24px 0;border-top:1px solid var(--rule-soft)}
   .listing li:first-child{border-top:0;padding-top:4px}
   .listing h3{margin:0 0 5px;font-size:1.18rem}
-  .listing h3 a{border:0;color:var(--navy-deep)}
+  /* Inherits the site underline. It previously carried border:0, which made the
+     listing title the only link on the site with no visual affordance. */
+  .listing h3 a{color:var(--navy-deep)}
   .listing h3 a:hover{color:var(--navy)}
+  .listing .more{margin:11px 0 0;font-size:.95rem}
+  .listing .more a{font-weight:700;border-bottom-color:currentColor}
+  .listing .more a::after{
+    content:"\2192";margin-left:.4em;display:inline-block;
+    transition:transform .16s ease
+  }
+  .listing .more a:hover::after{transform:translateX(3px)}
+  @media (prefers-reduced-motion:reduce){
+    .listing .more a::after{transition:none}
+    .listing .more a:hover::after{transform:none}
+  }
   .listing .when{font-size:.82rem;color:var(--faint);letter-spacing:.04em;margin:0 0 7px}
   .listing .blurb{font-size:.99rem;color:var(--muted);margin:0;line-height:1.55}
   .empty{
