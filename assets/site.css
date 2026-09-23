@@ -340,7 +340,13 @@
   .top-nav{display:flex;gap:26px;font-size:.97rem}
   .top-nav a{color:var(--muted);border:0}
   .top-nav a:hover{color:var(--navy)}
-  @media (max-width:620px){ .top-nav{display:none} }
+  /* The nav previously hid below 620px, which left a phone with no route into
+     any section page at all - the cards sit 4,000px down. It wraps now instead. */
+  @media (max-width:760px){
+    .top-row{flex-wrap:wrap;gap:10px 0}
+    .top-nav{order:3;width:100%;gap:0 18px;flex-wrap:wrap;row-gap:4px;
+      font-size:.88rem;padding-bottom:4px}
+  }
 
   /* opening block, banded so the type is not left floating on white */
   .hero{background:var(--accent-bg);border-bottom:1px solid var(--rule);
@@ -600,3 +606,12 @@
   ol.practice li{counter-increment:pr;padding-left:2.5rem;position:relative;margin:0}
   ol.practice li::before{content:counter(pr,decimal-leading-zero);position:absolute;left:0;top:.1em;
     font-family:var(--serif);font-size:.95rem;color:var(--navy);font-weight:600}
+
+  /* hero graphic as a linked preview - the source is 1536px of fine detail and
+     is unreadable at the 680px article width, so it opens full size */
+  .hero-fig{margin:0 0 34px}
+  a.hero-link{display:block;line-height:0;border:1px solid var(--rule);border-radius:3px;
+    overflow:hidden;background:var(--bg-soft)}
+  a.hero-link:hover{border-color:var(--navy)}
+  a.hero-link:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+  a.hero-link img{width:100%;height:auto;display:block}
