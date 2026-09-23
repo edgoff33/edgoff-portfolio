@@ -400,6 +400,8 @@
   .lane .v{display:block;font-size:.86rem;line-height:1.45;color:var(--muted)}
   .lane.record .k{font-family:var(--serif);font-weight:600;font-size:1.01rem;
     color:var(--navy-deep);line-height:1.3}
+  .lane.record .k a{color:inherit}
+  .lane.record .k a:hover{color:var(--navy)}
   .lane.record .v{font-size:.79rem;letter-spacing:.05em;text-transform:uppercase;
     color:var(--faint)}
 
@@ -517,6 +519,100 @@
     .artifact-hotspot{display:none}
     .article{max-width:none}
   }
+
+  /* ============================================================
+     GOVERNANCE MODEL PIECE - added 2026-09-23
+     Two accent hues, one per source framework, so the diagram can
+     key each layer to the model it comes from. Navy is CSF, and is
+     the existing token. These two are new and flip for dark mode.
+     ============================================================ */
+  :root{ --teal:#2f6f6b; --bronze:#8f6334;
+         --dia-fill:#e8ebf0; --dia-stroke:#c3ccd9;
+         --lobe-fill:#f2ece3; --lobe-stroke:#d7c9b4; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --teal:#74b7b1; --bronze:#cb9c66;
+      --dia-fill:#222b38; --dia-stroke:#3b4859;
+      --lobe-fill:#2a2620; --lobe-stroke:#4a4033;
+    }
+  }
+  :root[data-theme="dark"]{
+    --teal:#74b7b1; --bronze:#cb9c66;
+    --dia-fill:#222b38; --dia-stroke:#3b4859;
+    --lobe-fill:#2a2620; --lobe-stroke:#4a4033;
+  }
+
+  /* hero graphic - no call to action drawn in, so no hotspot */
+  .hero-fig{margin:0 0 34px}
+  .hero-fig img{
+    width:100%;height:auto;display:block;border-radius:3px;
+    border:1px solid var(--rule);background:var(--bg-soft)
+  }
+  .hero-fig figcaption{margin-top:10px;font-size:.93rem;line-height:1.5;color:var(--muted)}
+
+  /* coverage matrix */
+  .tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--bg-soft);margin:26px 0 10px}
+  table.matrix{border-collapse:collapse;width:100%;min-width:34rem;font-size:.92rem}
+  table.matrix th,table.matrix td{padding:.85rem .9rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--rule-soft)}
+  table.matrix thead th{font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--faint);font-weight:700;border-bottom:1px solid var(--rule)}
+  table.matrix tbody tr:last-child th,table.matrix tbody tr:last-child td{border-bottom:0}
+  table.matrix tbody th{font-weight:700;color:var(--ink);width:15rem}
+  table.matrix tbody th small{display:block;font-weight:400;color:var(--faint);
+    font-size:.78rem;letter-spacing:0;text-transform:none;margin-top:.15rem}
+  td.yes{color:var(--ink);font-weight:700}
+  td.no{color:var(--faint)}
+  .mark{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;margin-right:.5rem}
+  .mark.on{background:var(--navy)}
+  .mark.off{background:transparent;border:1px solid var(--faint)}
+
+  /* the three-layer diagram */
+  .model-fig{margin:30px 0 26px}
+  .svgwrap{overflow-x:auto;padding-block:.5rem}
+  svg.model{display:block;width:100%;min-width:34rem;max-width:680px;height:auto;margin:0 auto}
+  .model .dim path{fill:var(--dia-fill);stroke:var(--dia-stroke);stroke-width:1}
+  .model .dim-t text{fill:var(--navy-deep);font-family:Calibri,Carlito,sans-serif;
+    font-size:13px;font-weight:700;text-anchor:middle;dominant-baseline:middle}
+  .model circle.lobe{fill:var(--lobe-fill);fill-opacity:.72;stroke:var(--lobe-stroke);stroke-width:1}
+  .model circle.core{fill:var(--bg);stroke:var(--bronze);stroke-width:1.5}
+  .model text.lobe-t{fill:var(--bronze);font-size:15px;font-weight:700;text-anchor:middle}
+  .model text.core-t{fill:var(--ink);font-family:var(--serif);font-size:19px;font-weight:600;text-anchor:middle}
+  .model .box rect{fill:none;stroke:var(--teal);stroke-width:1.5}
+  .model .box text.bt{fill:var(--teal);font-size:14px;font-weight:700;text-anchor:middle;letter-spacing:.06em}
+  .model .box text.bs{fill:var(--muted);font-size:12.5px;text-anchor:middle}
+  .model .flow{stroke:var(--faint);stroke-width:1.25;fill:none}
+  .model #ah path{fill:var(--faint)}
+  .model text.flow-t{fill:var(--muted);font-size:12px;font-style:italic}
+  .model text.layer-t{fill:var(--faint);font-size:11.5px;letter-spacing:.11em;font-weight:700}
+  .scrollhint{display:none;font-size:.85rem;color:var(--faint);font-style:italic;margin:.4rem 0 0}
+  @media (max-width:640px){ .scrollhint{display:block} }
+  .model-fig figcaption{margin-top:12px;font-size:.93rem;line-height:1.5;color:var(--muted)}
+
+  /* the eight dimensions */
+  .dims{border-top:1px solid var(--rule);margin-top:24px}
+  .dim-item{border-bottom:1px solid var(--rule-soft);padding:20px 0;
+    display:grid;grid-template-columns:2.1rem 1fr;gap:0 .9rem}
+  .dim-n{font-family:var(--serif);font-size:1.05rem;color:var(--faint);
+    line-height:1.5;font-variant-numeric:tabular-nums}
+  .dim-item h3{margin:0 0 6px}
+  .dim-item p{margin:0 0 11px;color:var(--muted);font-size:.99rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+  .chip{font-size:.72rem;letter-spacing:.04em;padding:.2rem .5rem;border-radius:2px;
+    border:1px solid currentColor;white-space:nowrap}
+  .chip.csf{color:var(--navy)}
+  .chip.lines{color:var(--teal)}
+  .chip.cap{color:var(--bronze)}
+  @media (max-width:640px){
+    .dim-item{grid-template-columns:1fr}
+    .dim-n{display:none}
+  }
+
+  /* numbered practice list */
+  ol.practice{list-style:none;counter-reset:pr;padding:0;margin:22px 0 0;display:grid;gap:18px}
+  ol.practice li{counter-increment:pr;padding-left:2.5rem;position:relative;margin:0}
+  ol.practice li::before{content:counter(pr,decimal-leading-zero);position:absolute;left:0;top:.1em;
+    font-family:var(--serif);font-size:.95rem;color:var(--navy);font-weight:600}
 
 </style>
 </head>
