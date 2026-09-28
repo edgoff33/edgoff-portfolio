@@ -1,0 +1,103 @@
+edgoff.net site source
+======================
+
+VERSION:  2026-09-28-a
+BUILT:    2026-09-28, adds How I Build Shared Purpose in a Technical Team
+SUPERSEDES: 2026-09-23-a, -b and -c
+ZIPPED:   2026-09-28
+
+This file exists so "do I have the newest zip?" is answerable by opening one
+file instead of comparing folder dates. Every zip issued from here on carries a
+VERSION line. Higher date, and then higher letter, wins.
+
+WHAT IS IN THIS VERSION
+-----------------------
+Added in 2026-09-28-a:
+  - How I Build Shared Purpose in a Technical Team, the third How I Work
+    piece, at how-i-work/shared-purpose-in-a-technical-team/
+  - Its hero graphic and 768-wide variant under src/static/, shown as a
+    linked preview because the source is dense at article width
+  - An original nested-purpose diagram, inline SVG, carrying presentation
+    fill and stroke attributes as a floor under the CSS, plus its own
+    dark-mode block
+  - Listing entry on the How I Work index
+  - Landing card count raised from 2 frameworks to 3 frameworks
+  - Page registered in build.py PAGES and in verify.js
+  - Sitemap now carries twelve URLs
+  - No change to site.css; the piece reuses existing components only
+
+Added in 2026-09-23-c, fixing three faults found on the live site:
+  - Stylesheet link is now cache-busted with the source version
+    (assets/site.css?v=...). A stale cached stylesheet was rendering the
+    governance diagram as solid black, because SVG fill falls back to
+    black when the CSS custom properties it references do not exist.
+  - The governance diagram now carries presentation fill and stroke
+    attributes as a floor under the CSS, so it can never render black
+    even with no stylesheet at all.
+  - Landing top nav links the six section pages instead of five on-page
+    anchors. Previously nothing in the nav reached a section page, and
+    the nav was hidden entirely below 620px, so a phone had no route
+    into How I Work short of scrolling 4,100px to the card grid. It now
+    wraps instead of hiding.
+  - The governance hero opens at full size in a new tab, as the 30/60/90
+    plan's graphic does. At the 680px article width the source graphic's
+    fine detail is unreadable.
+
+Added in 2026-09-23-a:
+  - The Blended Cyber Governance Model, the second How I Work piece, at
+    how-i-work/blended-cyber-governance-model/
+  - Its hero graphic and 768-wide variant under src/static/
+  - Listing entry on the How I Work index
+  - Landing card count raised from 1 framework to 2 frameworks
+  - site.css: teal and bronze accent tokens with dark-mode values, plus
+    the components that piece needs (.hero-fig, table.matrix, .model-fig,
+    .dims with .chip, ol.practice)
+  - Page registered in build.py PAGES and in verify.js
+  - Sitemap now carries eleven URLs
+
+Carried from 2026-09-21-d, the landing page redesign:
+  - short landing page, purpose-led headline, tinted opening band
+  - differentiator panel in the right column
+  - outcomes lane and public record lane, all four record items linked
+  - label rail on sections, card grid fixed at three columns
+  - five section pages: published-work, standards, career, capabilities,
+    credentials
+  - Source Serif 4 headings with Carlito body
+  - acronyms expanded on first substantive use
+  - global uppercase h1 and h2 overridden on new page titles
+  - static assets mirrored from src/static into the build
+  - preview link rewriting at any directory depth, preview asset paths
+    flattened so images resolve
+
+NOT YET IN THIS VERSION
+-----------------------
+Nothing outstanding.
+
+DIFFERENCE FROM 2026-09-23-a
+----------------------------
+Only this file. build.py, verify.js and everything under src/ are byte
+identical, so both versions build the same site. -a described the
+governance piece under the NOT YET IN THIS VERSION heading, which was
+wrong, and carried no build checklist. -b corrects both.
+
+Two zips were issued as -a before this. If any zip on disk says -a,
+it is superseded - keep -b.
+
+BUILD CHECKLIST - do all four, every rebuild
+--------------------------------------------
+1. Bump the VERSION line above. Scheme YYYY-MM-DD-x, letter increments
+   for further builds the same day.
+2. Move anything just built from NOT YET IN THIS VERSION into
+   WHAT IS IN THIS VERSION, and leave "Nothing outstanding" if empty.
+3. Update the Current section of Source_Zip_Version.md in project
+   knowledge to the same version, with the same manifest.
+4. Update Portfolio_Index.md - the piece's row, the sitemap count, and
+   the Source version line at the top.
+
+HOW TO CHECK A ZIP IS CURRENT
+-----------------------------
+1. Open SOURCE-VERSION.txt at the root of the unzipped folder.
+2. Compare the VERSION line against the one recorded in Portfolio_Index.md.
+3. If a zip has no SOURCE-VERSION.txt, it predates 2026-09-23 and is stale.
+
+python3 build.py prints the version at the top of every build.
